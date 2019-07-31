@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Greenability | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/index.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  <!-- Demo styles -->
+
+</head>
+<body>
+
+  <!-- Swiper -->
+
+  <div class="swiper-container swiper-container-v">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+
+        <a class="navbar-brand" href="homepage.html">
+          <i class="fas fa-lightbulb" style="color:lightgreen;"></i>
+          Greenability</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="location.html">Solar Calculator</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="quiz.html">Quiz</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" onclick="toAbout()">About</a>
+            </li>
+
+          </ul>
+        </div>
+
+    </nav>
+
+
+
+    <div class="swiper-wrapper">
+
+
+      <div class="swiper-slide" id="firstSlide" style="background-image: url(img/s1.jpg); ">
+        <div class="d-flex flex-column justify-content-center text-white" style="background: rgba(0, 0, 0, 0.4); width: 70%; height: 50%; ">
+            <div class="mx-auto">
+              <h1>NEW TO SOLAR ENERGY?</h1>
+              <h3>
+                Find the right solar panel system with its energy estimate and it's contribution to the environment in just a few clicks.
+              </h3>
+              <br>
+
+            </div>
+
+          <div class="">
+          <a class="btn btn-success" href="location.html">Solar Calculator</a>
+          </div>
+        </div>
+      </div>
+
+<!-- project descriprtion part -->
+      <div class="swiper-slide"  style="background-image: url(img/images21.jpeg)">
+
+                <div class="swiper-container swiper-container-h" style="padding: 5% 3% 3% 3%">
+                  <div class="swiper-wrapper">
+
+                    <div class="swiper-slide text-center" style="background-color: transparent; border-color: transparent;">
+
+
+                      <div class="card text-left bg-light text-black text-center" style="opacity: .9">
+                        <h3 class="card-header"><b>Focus & Goal</b></h3>
+                        <div class="card-body">
+                          <h4>
+                            <p>
+                              1. Our website provides a solar calculator to help you solve the solar panel installation issues <br>
+                              2. We provide the rooftop estimator and give the most suitable recommendations, as well as relavant
+                              information to help you in deciding whether to invest in solar panels or not. <br>
+                              3. We aim to promote sustainability in Victoria and help to develop an environmental-friendly society.
+                            </p></h4>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="swiper-slide" style="background-color: transparent">
+                      <div class="card text-left bg-light text-black text-center" style="opacity: .95">
+                        <h3 class="card-header"><b>Our target</b></h3>
+                        <div class="card-body">
+
+                          <h4>We welcome everyone who wants to install the solar panels. Our website is designed for
+                          different types of homeowners such as office workers, parents with kids and elderly people. The website will help you
+                         find the best solar solution, which customizes you solar panel calculating service and reflects your contribution to the
+                       environment.</h4>
+
+                        </div>
+
+                      </div>
+                    </div>
+
+
+                    <div class="swiper-slide" style="background-color: transparent">
+                      <div class="card h-60% text-left bg-light text-black text-center" style="opacity: .95">
+                        <h3 class="card-header"><b>Our motivation</b></h3>
+                        <div class="card-body">
+                          <br>
+                          <h4>
+                            <p>
+                              1. Australia heavily relies on the non-renewable sources of energy such as coal for the generation of electricity.<br>
+                              2. Using coal generated electricty causes a serious threat to the environment in land, air and water pollution.
+                            </p>
+                             </h4>
+
+                        </div>
+                        </div>
+                      </div>
+                        <div class=" swiper-pagination swiper-pagination-h"></div>
+                      </div>
+                  </div>
+
+      </div>
+      <!-- project descriprtion part -->
+
+      <!-- map part -->
+              <div class="swiper-slide" id="slide1" style="background-image: url('img/map.jpeg')">
+                <div class="d-flex flex-column justify-content-center text-white" style="background: rgba(0, 0, 0, .4); width: 70%; height: 50%; ">
+                    <div class="mx-auto">
+                      <h1>Rooftop Calculation</h1>
+                      <h3>Calculte your roofsize, solar panels and the energy estimated using those panels.</h3>
+                      <br>
+
+                    </div>
+
+                  <div class="">
+                  <a href="location.html" class="btn btn-success">Solar Estimator</a>
+                  </div>
+                </div>
+
+              </div>
+      <!-- map part -->
+
+
+<!-- quiz part -->
+      <div class="swiper-slide"  style="background-image: url(img/quiz7.jpg); ">
+        <div class="d-flex flex-column justify-content-center text-white" style="background: rgba(0, 0, 0, .4); width: 70%; height: 50%; ">
+            <div class="mx-auto">
+              <h1>Test Your Knowledge</h1>
+              <h3>Take an interactive quiz on solar awareness</h3>
+              <br>
+
+            </div>
+
+          <div class="">
+          <a href="quiz.html" class="btn btn-success">QUIZ</a>
+          </div>
+        </div>
+
+      </div>
+      <!-- quiz part -->
+
+      <!-- news part -->
+
+        <div class="swiper-slide" style="background-image: url('img/newspapers1.jpg')">
+          <div class="d-flex flex-column justify-content-center text-white" style="background: rgba(0, 0, 0, .4); width: 70%; height: 50%; ">
+              <div class="mx-auto">
+                <h1>News and Events</h1>
+                <h3>Look into some trending news and articles related to Solar energy in Victoria</h3>
+                <br>
+
+              </div>
+
+            <div class="">
+            <a href="news.html" class="btn btn-success">Explore</a>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!-- news part -->
+
+        <!-- statistics part -->
+
+        <div class="swiper-slide" style="background-image: url('img/sta2.jpeg')">
+
+          <div class="d-flex flex-column justify-content-center text-white" style="background: rgba(0, 0, 0, .8); width: 100%; height: 100%; ">
+            <div class="row " style="padding-top: 50px">
+
+              <div class ="col-md-3 align-self-center text-black text-center">
+              <h1>Statistics</h1>
+              <br>
+              <p>From the line chart it is clearly seen that the daily exposure of solar radiance does not show any fluctuations
+              and remains the same from 1990 till date in Melbourne. This makes the solar energy so reliable and trustable.</p>
+            </div>
+
+            <div class = "col-md-8 align-self-center "  >
+                <div id="myDiv" class="mx-auto" style="opacity: .8"></div>
+            </div>
+            <script src="js/plot.js" type="text/javascript"></script>
+
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+
+<!-- statistics part -->
+
+
+
+
+<!-- about us -->
+        <div class="swiper-slide" id="lastSlide" style="position: relative;">
+
+          <div class="d-flex flex-column justify-content-center text-black" style="width: 70%; height: 50%;">
+              <div class="mx-auto">
+                <br>
+                <h3 style="color: black; ">
+                  <b>ABOUT US</b>
+                </h3>
+
+                <p><h5>We are a young group of graduates from Monash University addressing
+                  the problem related to the installation of solar panels on the rooftop. We made it different from the traditional
+                  approach of asking bills and postcodes. <br><br>
+
+                  We use Google maps along with the search to make the task easy for the user.<br><br>
+                  We want to make this society sustainable by giving awareness on the use of renewable sources of energy. <br><br>
+                  For more details contact us at: <br>
+                  Email : <a href="mailto:#gagosolar@gamil.com">gagosolar@gmail.com</a> <br>
+                  Call : <a href="tel:#">+61-42315678</a>
+                </h5><p>
+                <br>
+
+              </div>
+
+
+          </div>
+
+          <nav class="navbar navbar-dark bg-dark py-1" style="bottom: 0; position: absolute; left:0; right:0;">
+            <div class="navbar-brand"><h6>CopyRight © 2019 Greenability All Rights Reserved</h6></div>
+            <!-- <div class="my-2 my-sm-0">Created by TP14</div> -->
+            <a href="homepage.html">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Home</button></a>
+          </nav>
+
+
+        </div>
+<!-- about us -->
+
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination swiper-pagination-v"></div>
+    <div class="swiper-button-prev swiper-button-black"></div>
+    <div class="swiper-button-next swiper-button-black"></div>
+
+
+  </div>
+
+
+  <!-- Swiper JS -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiperV = new Swiper('.swiper-container-v', {
+      direction: 'vertical',
+
+      pagination: {
+        el: '.swiper-pagination-v',
+        clickable: true
+      },
+
+      mousewheel:{
+        invert: true,
+
+      },
+      navigation:{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      keyboard: {
+         enabled: true,
+       },
+    });
+
+    var swiperH = new Swiper('.swiper-container-h', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView:'auto',
+      slidesPerView: 3,
+      spaceBetween: 30,
+      loop:true,
+      coverflowEffect: {
+        rotate:50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows : true,
+      },
+      pagination: {
+        el: '.swiper-pagination-h',
+        clickable: true,
+      },
+      keyboard: {
+         enabled: true,
+       },
+
+       autoplay:{
+         delay: 10000,
+         disableoninteraction: false
+       },
+
+    });
+
+    $(window).resize(function(){
+         var ww = $(window).width()
+         if (ww>1000) swiperH.params.slidesPerView = 3;
+         if (ww>468 && ww<=1000) swiperH.params.slidesPerView = 3;
+         if (ww<=468) swiperH.params.slidesPerView = 1;
+         swiperH.update();
+       })
+     $(window).trigger('resize');
+
+    function toProject() {
+      swiperV.slideTo($('#slide1').index(),0,false);
+
+    }
+
+    function toAbout() {
+      swiperV.slideTo($('#lastSlide').index(),0,false);
+    }
+
+</script>
+
+
+</body>
+</html>

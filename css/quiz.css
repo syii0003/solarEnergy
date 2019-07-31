@@ -1,0 +1,54 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+body {
+  padding-top: 56px;
+}
+
+/* quiz container */
+#quizContainer {
+  position: relative;
+  background: rgba(255,255,255,.5);
+  padding: 20px;
+  border: 1px solid #000000;
+  box-shadow: 0 0 8px 3px #fff;
+}
+
+/* style for each question */
+.question {
+  position: relative;
+  padding: 20px;
+  background: #000000;
+  border-radius:  20px;
+  margin: 10px, 0, 10px, 0;
+  color: #ffffff;
+  opacity: 0.8
+}
+
+.option {
+  width: 100%;
+  display: inline-block;
+  height: auto;
+  padding: 10px 0 10px 15px;
+  vertical-align: middle;
+  background: rgba(255,255,255,.5);
+  margin: 10px 0 10px 10px;
+  color: #000000;
+  border-radius: 20px;
+  font-weight: bold;
+}
+/* hover effect on option */
+.option: hover {
+  background: #08083C;
+  color: #f6f6f6;
+}
+/* button effect */
+#next {
+  width: 20%;
+}
+.option input:checked .option {
+  background: #08038C;
+  color: #000;
+}

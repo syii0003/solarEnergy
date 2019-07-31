@@ -1,0 +1,35 @@
+.color-button {
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+    margin: 2px;
+    float: left;
+    cursor: pointer;
+}
+
+.bulb-text{
+  position: absolute;
+  bottom: 7.5rem;
+  left: 3rem;
+}
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* a {
+  -webkit-appearance: none;
+} */
+
+html {
+  scroll-behavior: smooth;
+}

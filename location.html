@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Greenability | Solar Estimator</title>
+    <!-- <link rel="shortcut icon" href="img/logo.png" /> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!--Fontawesome icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/location.css">
+
+  </head>
+  <body>
+
+    <nav class="navbar static-top navbar-dark bg-dark py-2">
+      <a class="navbar-brand" href="homepage.html">
+        <i class="fas fa-lightbulb" style="color:lightgreen;"></i>
+        Greenability
+      </a>
+      <div class="text-white mx-auto">
+        <h4>Solar Estimator</h4>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row mt-3 align-items-center">
+          <!-- <div class="col-md-1"></div> -->
+          <div class="col-md-7">
+            <input id="pac-input" type="text" class="form-control"  data-toggle="tooltip" data-placement="bottom" placeholder="Please enter the address" title="">
+          </div>
+          <div class="col-md-2">
+            <div id="color-palette"></div>
+          </div>
+          <div class="col-md-1">
+            <button type="button" id="delete-button" class="btn btn-danger">Delete Shape</button>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+
+      <div class="row mt-1 align-items-center" id="mapContainer" style="display:none;">
+        <div class="col-md-10 w-100 p-10" id="map" style="height:550px;"></div>
+        <div class="col-md-2">
+          <div class="card h-50">
+            <div class="card-body">
+               <img class="card-img-top" class="img-fluid" src="img/compass.png" style="max-width: 100%;">
+            </div>
+            <div class="card-footer">
+              <p class="card-text"><h5>Draw the polygon on the rooftop in North/West Direction.</h5></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class = "container">
+        <div class="row mt-2" id="userdetails" style="display:none">
+          <div class="card-deck mx-auto">
+            <div class="card">
+              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+              <div class="card-body">
+                <h3 class="card-title">Rooftop size</h3>
+                <h4 class="card-subtitle mb-2 text-muted">Calculated in square meters</h4>
+                <h1><p class="card-text" id="area">0</p></h1>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Based on the polygon size</small>
+              </div>
+            </div>
+            <div class="card">
+              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+              <div class="card-body">
+                <h3 class="card-title">Solar Panels</h3>
+                <h4 class="card-subtitle mb-2 text-muted">On the rooftop</h4>
+                <h1><p class="card-text" id="panel">0</p></h1>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Based on the roof area</small>
+              </div>
+            </div>
+            <div class="card">
+              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+              <div class="card-body">
+                <h3 class="card-title">Weather Station</h3>
+                <!-- <h4 class="card-subtitle mb-2 text-muted">Nearest to house</h4> -->
+                <h4><p class="card-text" id="sno"></p></h4>
+                <h4><p class="card-text" id="sdetails">Near to the house</p></h4>
+                <h1><p class="card-text" id="sdist">0</p></h1>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Based on the house location</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class = "container" id="recContainer" style="display:none;">
+        <hr></hr>
+        <br>
+        <div class="row text-center" style="background: rgba(0, 0, 0, .8);">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+          <h2 style="color: white">
+            Recommended Solar Panel System
+          </h2>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+
+
+        <form id="recommendform" onsubmit="return false" class="was-validated">
+          <div class="form-group row align-items-center d-flex">
+            <div class="col-sm-8">
+              <label for="dayuse" class="col-form-label"><h4>Electricity used in daylight</h4> </label>
+              <div class="row align-items-center">
+              <div class="col-sm-10 d-flex justify-content-center my-4">
+                <!-- <input type="email" class="form-control" id="inputEmail3" placeholder="Email"> -->
+                <span class="font-weight-bold indigo-text mr-2">0%</span>
+                <input type="range" class="custom-range" min="0" max="100" step="10" id="dayuse">
+                <span class="font-weight-bold indigo-text ml-2">100%</span>
+                <!-- <input id="slidertext" class="form-control" type="text" placeholder="4KW" readonly> -->
+              </div>
+              <div class="col-sm-2 justify-content-center">
+                <input id="usetext" class="form-control" type="text" placeholder="50%" readonly>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 align-items-center">
+            <label for="persons"><h4>Number of residents</h4></label>
+            <div class="form-group">
+            <select id="persons" class="custom-select" required>
+              <!-- <option selected value="">Select...</option> -->
+              <option value="1">1-2 people</option>
+              <option value="2">2-3 people</option>
+              <option value="3">4+ people</option>
+              <!-- <option value="5">5 or more</option> -->
+            </select>
+            <div class="invalid-feedback">Please select the number of residents in the house</div>
+          </div>
+          </div>
+        </div>
+          <div class="form-group row">
+            <div class="col-sm-12 text-center">
+              <button id="recsubmit" type="submit" class="btn btn-success">Recommend</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class = "container" id="recPanelContainer">
+    <div id="recpanels" class="row mt-5 justify-content-center" style="display:none;">
+      <div class="col-md-1 text-center"></div>
+      <div class="col-md-3 mb-2 text-center">
+        <i class="fas fa-solar-panel fa-10x"></i>
+      </div>
+      <div class="col-md-3 text-center">
+        <div class="card bg-light mb-3 mx-auto" style="max-width: 18rem;">
+          <div class="card-header"><b>Solar panel System</b></div>
+          <div class="card-body">
+            <h5 class="card-title" id="recsystemtype"></h5>
+            <p class="card-text mr-2" id="recsystemwatt"></p>
+            <h2 class="card-text ml-2" id ="recsystempanels"></h2>
+            <p id="recnormalsolartext"></h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1 text-center"></div>
+      <div class="col-md-3 text-center">
+        <div class="card bg-light mb-3 mx-auto" style="max-width: 18rem;">
+          <div class="card-header"><b>What's Next?</b></div>
+          <div class="card-body">
+            <p> Our recommendations are based on the annual average consumption across Australia.
+              But your needs can vary. Click the below button to determine your own solar panel system.</p>
+          </div>
+          <div class="card-footer">
+            <a id="iniSolar" href="#formContainer"><button type="submit" class="btn btn-primary">Choose</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+
+      <div class = "container" id="formContainer" style="display:none;">
+        <hr></hr>
+        <br>
+
+        <div class="row text-center" style="background: rgba(0, 0, 0, .8);">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+          <h2 style="color: white">
+            Choose your Solar panel system
+          </h2>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+
+        <form id="solarform" onsubmit="return false">
+          <div class="form-group row align-items-center">
+            <label for="system" class="col-sm-5 col-form-label"><h4>Solar panel system </h4> </label>
+            <div class="col-sm-6 d-flex justify-content-center my-4">
+              <!-- <input type="email" class="form-control" id="inputEmail3" placeholder="Email"> -->
+              <span class="font-weight-bold indigo-text mr-2 mt-1">1KW</span>
+              <input type="range" class="custom-range" min="1" max="7" id="system">
+              <span class="font-weight-bold indigo-text ml-2 mt-1">7KW</span>
+            </div>
+            <div class="col-sm-1">
+              <input id="slidertext" class="form-control" type="text" placeholder="4KW" readonly>
+            </div>
+          </div>
+
+          <fieldset class="form-group">
+            <div class="row align-items-center">
+                <legend class="col-form-label col-sm-5 pt-0"><h4>Solar panel output Wattage </h4></legend>
+              <div class="col-sm-6">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline1" value="250" name="customRadioInline1" class="custom-control-input" onclick="radioChange()" checked>
+                  <label class="custom-control-label" for="customRadioInline1"><b>250W</b></label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline2" value="300" name="customRadioInline1" class="custom-control-input" onclick="radioChange()">
+                  <label class="custom-control-label" for="customRadioInline2"><b>300W</b></label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline3" value="330" name="customRadioInline1" class="custom-control-input" onclick="radioChange()">
+                  <label class="custom-control-label" for="customRadioInline3"><b>330W</b></label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <div class="form-group row">
+            <div class="col-sm-12 text-center">
+              <button id="submit" type="submit" class="btn btn-primary">Get Details</button>
+            </div>
+          </div>
+        </form>
+        </div>
+
+        <div class = "container" id="panelContainer">
+        <div id="solarpanels" class="row mt-5 justify-content-center" style="display: none;">
+          <div class="col-md-1 text-center"></div>
+          <div class="col-md-3 text-center">
+            <i class="fas fa-solar-panel fa-10x"></i>
+          </div>
+          <div class="col-md-3 text-center">
+            <div class="card bg-light mb-3 mx-auto" style="max-width: 18rem;">
+              <div class="card-header"><b>Solar panel System</b></div>
+              <div class="card-body">
+                <h5 class="card-title" id="systemtype"></h5>
+                <p class="card-text mr-2" id="systemwatt"></p>
+                <h2 class="card-text ml-2" id ="systempanels"></h2>
+                <p id="normalsolartext"></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1 text-center"></div>
+          <div class="col-md-3 text-center">
+            <div class="card bg-light mb-3 mx-auto" style="max-width: 18rem;">
+              <div class="card-header"><b>Know your energy</b></div>
+              <div class="card-body">
+                <p>
+                  Got your solar panel ready. How about calculating the energy that is going to be produced.
+                  Please click the below button to calculate your energy.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a id="energyButton" href="#energyContainer"><button type="submit" class="btn btn-success">Calculate</button></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+
+      <div class = "container-fluid" id="energyContainer" style="display:none">
+        <hr></hr>
+        <br>
+
+        <div class="row text-center" style="background: rgba(0, 0, 0, .8);">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+          <h2 style="color: white">
+            Energy Estimator
+          </h2>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+        <br>
+
+        <div class="row">
+        <div class="col-sm-9">
+        <div class = "row align-items-center">
+
+          <div class="col-sm-2">
+            <div class="card monthcard text-center" style="border-color: transparent;">
+              <i id="jan" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" ></i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="jantext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">January</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card" style="border-color: transparent;">
+              <i id="feb" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" >              </i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="febtext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">February</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card" style="border-color: transparent;">
+              <i id="mar" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" ></i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="martext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">March</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card" style="border-color: transparent;">
+              <i id="apr" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" ></i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="aprtext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">April</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card" style="border-color: transparent;">
+              <i id="may" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" ></i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="maytext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">May</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card" style="border-color: transparent;">
+              <i id="jun" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" ></i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="juntext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">June</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class = "row align-items-center mt-4">
+          <div class="col-sm-2">
+            <div class="card" style="border-color: transparent;">
+              <i id="jul" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" ></i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="jultext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">July</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card" style="border-color: transparent;">
+              <i id="aug" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" ></i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="augtext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">August</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card" style="border-color: transparent;">
+              <i id="sep" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" ></i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="septext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">September</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card" style="border-color: transparent;">
+              <i id="oct" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" ></i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="octtext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">October</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card" style="border-color: transparent;">
+              <i id="nov" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" ></i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="novtext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">November</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="card" style="border-color: transparent;">
+              <i id="dec" class="fas fa-lightbulb fa-7x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(252, 244, 12)" ></i>
+              <div class="card-body">
+                <div class="d-flex justify-content-center">
+                  <p id="dectext" class="card-text text-center" style="font-weight:bold;"></p>
+                  <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+                </div>
+                <p class="card-text text-center" style="font-weight:bold;">December</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 align-self-center">
+        <div class="card" style="border-color: transparent; font-size:24px">
+          <i id="annual" class="fas fa-lightbulb fa-10x text-center" data-toggle="tooltip" data-placement="top" style="opacity: 2; color: rgb(150, 255, 76)" >              </i>
+          <div class="card-body">
+            <div class="d-flex justify-content-center">
+              <p id="annualtext" class="card-text text-center" style="font-weight:bold;"></p>
+              <p class="card-text text-center" style="font-weight:bold;">&nbsp;kWh</p>
+            </div>
+            <p class="card-text text-center" style="font-weight:bold;">Annual</p>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="row mt-5 justify-content-center text-center d-flex flex-column">
+        <div>
+          <h4>Know your contribution to the environment</h4>
+        </div>
+        <div>
+          <a id="futureButton" href="#savingRow"><button type="submit" class="btn btn-success">Click Here</button></a>
+        </div
+      </div>
+      <div id = "savingRow" class = "row mt-5 align-items-center" style="display:none;">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 text-center border border-dark">
+        <div class="card-deck mt-4">
+          <div class="card" style="border-color:transparent;">
+            <i class="card-img-top fas fa-tree fa-8x" style="color:lightgreen"></i>
+            <div class="card-body">
+              <h5 class="card-title">Tree</h5>
+              <p class="card-text">Choosing the above solar panel system is equivalent to plant</p>
+              <h2 id="tree">0</h2>
+            </div>
+          </div>
+          <div class="card" style="border-color:transparent;">
+            <i class="card-img-top fas fa-car fa-8x" style="color:red"></i>
+            <div class="card-body">
+              <h5 class="card-title">Car</h5>
+              <p class="card-text">Choosing the above solar panel system have reduced the emission of driving your car for </p>
+              <h2 id="car">0</h2>
+            </div>
+          </div>
+          <div class="card" style="border-color:transparent;">
+            <i class="card-img-top fas fa-tint fa-8x" style="color:lightblue"></i>
+            <div class="card-body">
+              <h5 class="card-title">Fresh Water</h5>
+              <p class="card-text">Choosing the above solar panel system you have reduced the fresh water consumption by </p>
+              <h2 id="water">0</h2>
+            </div>
+          </div>
+          </div>
+        </div>
+        <!-- <div class="col-sm-2"></div> -->
+        </div>
+      </div>
+    </div>
+      </div>
+
+      <div class="container-fluid" style="padding-top:150px;">
+        <div class="row text-center align-items-center">
+        <nav class="navbar fixed-bottom navbar-dark bg-dark py-1">
+          <span class="navbar-text col-sm-10" style="color:white;">
+              <b>CopyRight © 2019 Greenability All Rights Reserved</b>
+          </span>
+          <span class="col-md-2">
+
+
+            <div class="row">
+              <div class="col-sm-4 text-center">
+                <div class="scrolltop">
+                  <div class="scroll">
+                    <a href="#" style="color: green"> <i class="fas fa-chevron-circle-up fa-2x"></i></a>
+                  </div>
+
+                </div>
+
+
+              </div>
+
+              <div class="col-sm-3">
+
+                </div>
+              <div class="col-sm-4 text-center">
+                <a href="homepage.html">
+                <button class="btn btn-outline-success" type="submit">Home</button></a>
+
+              </div>
+            </div>
+          </span>
+        </nav>
+      </div>
+    </div>
+
+
+
+
+
+    <!-- </div> -->
+    <script src="js/maps.js"></script>
+    <!-- <script src="js/form.js"></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYKG4-JRdmh0vHT6bL0eex41PcuzytaNw&libraries=drawing,places,geometry&callback=initMap" async defer></script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,304 @@
+
+.container-fluid {
+  height: 600px;
+}
+
+img {
+  .img-fluid;
+  max-width: 100%;
+  height: auto;
+}
+
+/* map part */
+
+#map {
+  height: 500px;
+}
+
+html {
+  font-family: 'Roboto Mono', monospace;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-buffer
+{ margin-top:20px;
+  margin-bottom: 20px;
+}
+
+.color-button {
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+    margin: 2px;
+    float: left;
+    cursor: pointer;
+}
+
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+
+#target {
+  width: 345px;
+}
+
+.solarimg{
+  height: 5%;
+}
+
+/* locationhtml map part */
+
+
+/* footer */
+
+.context-dark, .bg-gray-dark, .bg-primary {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-classic a, .footer-classic a:focus, .footer-classic a:active {
+    color: #ffffff;
+}
+.nav-list li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.nav-list li a:hover:before {
+    margin-left: 0;
+    opacity: 1;
+    visibility: visible;
+}
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 23px;
+    font: 900 13px/1 "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+.social-container .col {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.nav-list li a:before {
+    content: "\f14f";
+    font: 400 21px/1 "Material Design Icons";
+    color: #4d6de6;
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: -28px;
+    margin-right: 7px;
+    opacity: 0;
+    visibility: hidden;
+    transition: .22s ease;
+}
+
+
+/* images with text */
+
+.container {
+    margin-top: 20px;
+}
+
+/* Carousel Styles */
+.carousel-indicators .active {
+    background-color: #2980b9;
+    flex-grow: 1;
+
+}
+
+.carousel-inner img {
+    width: 100%;
+    max-height: 600px
+}
+
+.carousel-control {
+    width: 0;
+}
+
+
+/* carousel control part */
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-prev,
+.carousel-control .icon-next {
+	position: absolute;
+	top: 45%;
+	z-index: 5;
+	display: inline-block;
+}
+
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .icon-prev {
+	left: 10;
+}
+
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-next {
+	right: 10;
+}
+
+.carousel-control.left span,
+.carousel-control.right span {
+	background-color: #000;
+}
+
+.carousel-control.left span:hover,
+.carousel-control.right span:hover {
+	opacity: .7;
+	filter: alpha(opacity=70);
+}
+
+/* Carousel Header Styles */
+.header-text {
+    position: absolute;
+    top: 20%;
+    left: 1.8%;
+    right: auto;
+    width: 96.66666666666666%;
+    color: skyblue;
+}
+
+/* header text */
+.header-text h2 {
+    font-size: 40px;
+}
+
+.header-text h2 span {
+    background-color: transparent;
+	padding: 10px;
+}
+
+.header-text h3 span {
+	background-color: transparent;
+	padding: 15px;
+}
+
+.btn-min-block {
+    min-width: 170px;
+    line-height: 26px;
+}
+
+.btn-theme {
+    color: blue;
+    background-color: #75B0F4;
+    border: 2px solid #fff;
+    margin-right: 15px;
+}
+.btn-theme:hover {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+}
+/* carousel part */
+
+
+/* quiz part */
+#quizContainer {
+  height: 375px;
+  width: 60%;
+  position: relative;
+  background: rgba(255,255,255,.5);
+  padding: 20px;
+  border: 1px solid #08038C;
+  box-shadow: 0 0 8px 3px #fff;
+}
+
+
+.question {
+  position: relative;
+  padding: 20px;
+  font-size: 22px;
+  background: #08083C;
+  border-radius:  20px;
+  margin: 10px, 0, 10px, 0;
+  color: #f6f6f6;
+}
+
+.option {
+  width: 470px;
+  display: inline-block;
+  height: auto;
+  padding: 10px 0 10px 15px;
+  vertical-align: middle;
+  background: rgba(255,255,255,.5);
+  margin: 10px 0 10px 10px;
+  color: #000000;
+  border-radius: 20px;
+}
+
+.option: hover {
+  background: #08083C;
+  color: #f6f6f6;
+
+}
+
+#next {
+
+  position: relative;
+
+  background: rgba(255,255,255,.5);
+  width: 100px;
+  height: 35px;
+
+  cursor: pointer;
+  float: right;
+  margin: 10px;
+
+}
+
+#next: hover{
+  background: #08083C;
+  color: #f6f6f6;
+}
+
+#result {
+  height: 200px;
+  text-align: center;
+  font-size: 50px;
+
+}
+
+/* #retry {
+  text-align: center;
+  font-size: 26px;
+
+} */
+
+.option input:checked .option {
+  background: #08038C;
+  color: #000;
+}
+/* quiz part */
+
+/* reponsive */
+/* Large desktop */
+@media (min-width: 1200px) { ... }
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { ... }
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { ... }
+
+/* Landscape phones and down */
+@media (max-width: 480px) { ... }
